@@ -1,20 +1,24 @@
-# Use our docs for reference:
-# https://coder.com/docs/workspaces/workspaces-as-code/templates
-version: 0.1
+version: 0.2
 workspace:
   type: "kubernetes"
-  spec:
-    image: bencdr/coder-home-dir:latest # Rename to the same as your image
-    container-based-vm: true
-    cpu: 1
-    memory: 1
-    disk: 10
+  specs:
+    kubernetes:
+      cpu:
+        value: 1
+      image:
+        value: bencdr/coder-home-dir:latest
+      container-based-vm:
+        value: true
+      memory:
+        value: 2
+      disk:
+        value: 10
   configure:
     start:
-      - name: "Example step"
-        command: echo "Welcome to your Coder workspace!"
-  devURLs:
-    - name: dev
-      port: 3000
-      scheme: http
-      access: private
+      value:
+        - name: "Sample"
+          env:
+            GIT_REMOTE: git@github.com:bpmct/company-blog.git
+            CLONE_TO: /home/coder/company-blog
+          command: |
+            echo "test"
