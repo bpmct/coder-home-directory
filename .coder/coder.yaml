@@ -19,6 +19,7 @@ workspace:
         - name: "Copy initial home directory, if first time"
           env:
             COPY_FROM: /tmp/home
+          shell: "bash"
           command: |
             # Check if home dir has been copied already 
             if [ ! -f $HOME/.exists ]; then
