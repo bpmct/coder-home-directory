@@ -16,9 +16,14 @@ workspace:
   configure:
     start:
       value:
-        - name: "Sample"
+        - name: "Copy initial home directory, if first time"
           env:
-            GIT_REMOTE: git@github.com:bpmct/company-blog.git
-            CLONE_TO: /home/coder/company-blog
+            COPY_FROM: /tmp/home
           command: |
-            echo "test"
+            # Check if home dir has been copied already 
+            if [ ! -f $HOME/.exists ]; then
+              # copy hidden files too
+              shopt -s dotglob
+              # the home dir hasn't been copied yet
+              cp -r $COPY_FROM/. $HOME/.
+            fi
