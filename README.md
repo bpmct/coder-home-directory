@@ -7,3 +7,5 @@ This is an example project that copies over an initial home directory from anoth
 See the [.coder/](.coder/) folder for a sample image and corresponding template to copy the initial files.
 
 An individual developer can also further customize their home directory with a [dotfiles repo or a personalize script](https://coder.com/docs/workspaces/personalization).
+
+This is tested on Coder 1.19
